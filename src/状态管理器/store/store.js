@@ -9,8 +9,6 @@ class Store {
     self.state = {}; // 全局状态对象
     self.plugins = []; // 插件
     self.status = "resting"; // 初始状态
-    self.reCommit = self.commit;
-    self.reDispatch = self.dispatch;
 
     self.events = new SubPub();
 
