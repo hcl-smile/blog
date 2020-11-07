@@ -4,7 +4,53 @@
 
 ### anyTypeAnnotation
 
+#### 任意类型
+
+```javascript
+function ({ types: t }) {
+  return {
+    visitor: {
+      // 插件调用
+      AnyTypeAnnotation(path, options) {
+        // babel调用
+        t.anyTypeAnnotation(path, options);
+        console.log(path, "anyTypeAnnotation");
+      },
+    },
+  };
+};
+```
+
 ### arrayExpression
+
+#### 数组表达式
+
+**t.arrayExpression(elements)**
+
+> elements: Array<null | Expression | SpreadElement> (default: [])
+
+```javascript
+function ({ types: t }) {
+  return {
+    visitor: {
+      // 插件调用
+      ArrayExpression(path, options) {
+        /*
+         * 测试用例
+         * 改变原数组的每一项，每一项在原来的基础上乘于3
+         */
+        const elements = path.node.elements.map(element => {
+            element.value *=3
+            return element
+        })
+
+        // 替换原来的数组节点
+        t.ArrayExpression(elements);
+      },
+    },
+  };
+};
+```
 
 ### argumentPlaceholder
 

@@ -1,3 +1,3 @@
-function Text() {}
-
-new Text();
+function foo(a) {
+  return a;
+}

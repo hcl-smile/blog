@@ -1,21 +1,30 @@
-const Store = require("./src/状态管理器/store/store");
+import React from "react";
+import ReactDOM from "react-dom";
 
-const store = new Store({
-  state: {
-    count: 0,
-  },
-  mutations: {
-    run(state, payload) {
-      state.count = payload.count;
-    },
-  },
-  actions: {
-    run({ commit }, payload) {
-      commit("run", payload);
-    },
-  },
-  plugins: [function callback() {}],
-});
+function RenderTable() {
+  return (
+    <table>
+      <thead>
+        <tr>
+          <th>title1</th>
+          <th>title1</th>
+          <th>title1</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>title1</td>
+          <td>title1</td>
+          <td>title1</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>title1</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  );
+}
 
-store.dispatch("run", { count: 999 });
-console.log(store.state);
+ReactDOM.render(<RenderTable />, document.getElementById("root"));
